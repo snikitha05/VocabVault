@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: var(--bg);
+  --color-foreground: var(--text-h);
+  --color-primary: var(--accent);
+  --color-primary-foreground: #ffffff;
+  --color-muted: var(--code-bg);
+  --color-muted-foreground: var(--text);
+  --color-border: var(--border);
+  --color-card: var(--bg);
+  --color-card-foreground: var(--text-h);
+}
+
+@layer base {
+  :root {
+    --text: #4b5563;
+    --text-h: #111827;
+    --bg: #f9fafb;
+    --border: #e5e7eb;
+    --code-bg: #f3f4f6;
+    --accent: #8b5cf6; /* Violet 500 */
+    
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --text: #9ca3af;
+    --text-h: #f9fafb;
+    --bg: #09090b;
+    --border: #27272a;
+    --code-bg: #18181b;
+    --accent: #a855f7; /* Purple 500 */
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased selection:bg-primary/30 selection:text-primary;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-background/70 backdrop-blur-lg border border-border/50 shadow-sm;
+  }
+  .glass-card {
+    @apply bg-card/60 backdrop-blur-xl border border-border shadow-xl rounded-2xl;
+  }
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+  .backface-hidden {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+}
+
